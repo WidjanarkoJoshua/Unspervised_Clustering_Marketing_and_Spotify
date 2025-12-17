@@ -1,82 +1,126 @@
-# Unsupervised Learning for Marketing and Spotify Campaign Insights
+# Machine Learning for Marketing and Spotify Campaign Analysis
 
 ## Recruiter TL;DR
-- **Problem:** Marketing and media platforms often need to segment users and content with limited or noisy labels.
-- **Solution:** Applied unsupervised learning to uncover latent structure and improve downstream campaign prediction.
-- **Data:** Spotify audio feature data and a real-world marketing campaign dataset.
-- **Approach:** K-Means, Gaussian Mixture Models (EM), PCA, ICA, Random Projection, and neural network feature augmentation.
-- **Key Result:** Clustering features improved rare-response detection in marketing campaigns and produced interpretable segments for Spotify-style content promotion.
-- **Skills Demonstrated:** Customer segmentation, campaign analytics, unsupervised learning, feature engineering, and applied machine learning.
+- **Problem:** Marketing and media platforms must make targeting decisions using noisy, high-dimensional data with limited labels.
+- **Solution:** Applied supervised and unsupervised machine learning to segment users/content and predict campaign responsiveness.
+- **Data:** Spotify 2023 popular songs dataset and a real-world marketing campaign dataset.
+- **Models:** K-Means, Gaussian Mixture Models, PCA, ICA, Random Projection, SVM, KNN, and Neural Networks.
+- **Key Result:** Segmentation and feature engineering improved rare-response detection in marketing and revealed interpretable Spotify content clusters.
+- **Skills Demonstrated:** Marketing analytics, customer segmentation, model selection, hyperparameter tuning, and applied ML reasoning.
 
 ---
 
-## Overview
-This project explores how unsupervised learning techniques can support marketing decision-making and content-based campaigns when labeled data is limited. Clustering and dimensionality reduction were applied to two datasets to uncover hidden structure and evaluate how these representations affect downstream predictive performance.
+## Project Overview
+This project investigates how **machine learning models must be adapted to different data characteristics** rather than applied uniformly. Using two real-world datasets, I evaluated how supervised and unsupervised methods perform under varying conditions such as class imbalance, feature correlation, dataset size, and noise.
 
----
-
-## Motivation
-Marketing teams and media platforms such as Spotify must often:
-- Segment users or content without explicit labels
-- Work with high-dimensional, noisy behavioral data
-- Improve targeting and personalization under uncertainty
-
-Unsupervised learning provides tools to discover natural segments, reduce redundancy, and enhance supervised models without requiring additional labels.
+The goal was not just accuracy, but **actionable insight** for:
+- Marketing campaign targeting
+- Customer segmentation
+- Content-based promotion (Spotify-style use cases)
 
 ---
 
 ## Datasets
 
-### Spotify Songs Dataset
-- Audio features describing musical structure and style
-- Popularity metrics excluded to focus on intrinsic characteristics
-- High feature correlation and non-Gaussian distributions
-- Used to identify clusters useful for playlist curation and promotional campaigns
+### Spotify Songs Dataset (Content & Campaign Segmentation)
+- 2023 popular songs with audio and platform-based features
+- Target: song *valence* (positivity), binned into five classes
+- ~900 observations
+- Challenges:
+  - High feature correlation
+  - Mixed numeric and categorical data
+  - Small dataset size for deep learning
+- Business framing:
+  - Playlist curation
+  - Promotional grouping
+  - Mood-based content campaigns
 
-### Marketing Campaign Dataset
-- Customer demographics, purchasing behavior, and engagement metrics
-- Binary outcome indicating campaign responsiveness
-- Strong class imbalance
-- Used to evaluate segmentation quality and predictive uplift
+### Marketing Campaign Dataset (Customer Targeting)
+- Customer demographics, income, spending behavior, and engagement
+- Binary target: responsiveness to marketing campaigns
+- ~1,700 observations
+- Challenges:
+  - Strong class imbalance
+  - Correlated spending and income features
+  - Mixed ordinal and nominal categorical variables
+- Business framing:
+  - Campaign optimization
+  - Cost-efficient targeting
+  - Avoiding wasted outreach
 
 ---
 
 ## Methods
 
-### Clustering
-- K-Means
-- Gaussian Mixture Models (Expectation Maximization)
-- Evaluated using silhouette score and cluster stability
+### Unsupervised Learning
+- **Clustering**
+  - K-Means
+  - Gaussian Mixture Models (Expectation Maximization)
+- **Dimensionality Reduction**
+  - Principal Component Analysis (PCA)
+  - Independent Component Analysis (ICA)
+  - Random Projection
 
-### Dimensionality Reduction
-- Principal Component Analysis (PCA)
-- Independent Component Analysis (ICA)
-- Random Projection
-
-### Supervised Model Augmentation
-- Neural network trained on:
-  - Original features
-  - Dimension-reduced features
-  - Original features augmented with cluster labels
-- Performance evaluated using accuracy, recall, precision, and specificity
+Used to:
+- Discover latent customer and content segments
+- Reduce redundancy and noise
+- Improve downstream predictive models
 
 ---
 
-## Results and Insights
-- Spotify data favored K-Means due to correlated, non-Gaussian features
-- Dimensionality reduction improved cluster cohesion
-- Cluster labels improved identification of rare positive responders in marketing campaigns
-- Overall accuracy changes were modest, but segmentation improved actionable targeting
-- For Marketing, was able to notice customer segments that do not respond to engagement campaigns and avoid wasting resources
-- Also find customers in which we can find customers that are receptive and should be pushed for greater profit
-- For Spotify, Clustering allows for targeted recommendation systems to find similar songs regardless of popularity
+### Supervised Learning
+- **Support Vector Machines (SVM)**
+- **K-Nearest Neighbors (KNN)**
+- **Neural Networks**
+
+Each model was evaluated with:
+- Train / validation / test splits
+- Cross-validation
+- Hyperparameter tuning
+- Confusion matrices and learning curves
+
+---
+
+## Preprocessing and Feature Engineering
+- One-hot encoding for nominal categorical variables
+- Target encoding for ordinal features (e.g., education)
+- Feature binning (e.g., birth year into eras, valence into classes)
+- Standard scaling and bounded normalization
+- Removal of identifier and leakage-prone variables
+- Separate scaling strategies per dataset to reflect feature semantics
+
+---
+
+## Key Results and Insights
+
+### Spotify Dataset
+- Linear SVM performed best due to clean decision boundaries
+- Neural networks struggled due to:
+  - Small dataset size
+  - High noise
+  - Weak relationship between popularity signals and positivity
+- Clustering revealed interpretable groupings useful for content campaigns
+
+### Marketing Dataset
+- Neural networks outperformed simpler models with sufficient data
+- Clustering features improved specificity and rare-response detection
+- KNN was sensitive to dimensionality and noise
+- SVM provided strong baseline performance with good generalization
+
+---
+
+## Practical Takeaways
+- Model complexity must match dataset characteristics
+- Unsupervised learning adds value even without large accuracy gains
+- Marketing models benefit most from improved identification of *who not to target*
+- Feature engineering and preprocessing often matter more than model choice
 
 ---
 
 ## Technologies Used
 - Python 3.10
-- TensorFlow
 - scikit-learn
+- TensorFlow
 - NumPy
 - pandas
 - SciPy
@@ -84,8 +128,4 @@ Unsupervised learning provides tools to discover natural segments, reduce redund
 
 ---
 
-## Future Work
-- Apply segments to live A/B marketing experiments
-- Compare against tree-based and linear campaign models
-- Extend analysis to temporal user behavior
-- Evaluate segment stability over time
+## Repository Structure
