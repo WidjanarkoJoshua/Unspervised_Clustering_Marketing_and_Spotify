@@ -100,12 +100,15 @@ Each model was evaluated with:
   - High noise
   - Weak relationship between popularity signals and positivity
 - Clustering revealed interpretable groupings useful for content campaigns
+- **Business Impact:** Insights from clusters allow for targeted playlist curation, personalized promotions, and mood-based marketing strategies, helping streaming platforms increase engagement and listener retention.
 
 ### Marketing Dataset
 - Neural networks outperformed simpler models with sufficient data
 - Clustering features improved specificity and rare-response detection
 - KNN was sensitive to dimensionality and noise
 - SVM provided strong baseline performance with good generalization
+- **Business Impact:** Identifying customers who are more likely to engage with campaigns reduces wasted marketing spend, improves ROI, and enables more personalized customer outreach strategies.
+
 
 ---
 
