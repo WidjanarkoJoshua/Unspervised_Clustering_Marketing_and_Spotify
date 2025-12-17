@@ -131,4 +131,3 @@ Each model was evaluated with:
 
 ---
 
-## Repository Structure
