@@ -1,0 +1,20 @@
+Assignment 3 README 
+
+Link to Overleaf: 
+https://www.overleaf.com/read/rkrkkqfktczd#0a94d4 
+
+This assignemnt was run python version 3.10 and requires you to run 4 different files 
+1. assignment_3_clusters.ipynb 
+2. assignment_3_dim_red.ipynb 
+3.asignment_3_dim_red_clusters.ipynb 
+4.assignment_3_neural_network.opynb
+You can simply run all from top to bottom 
+
+Python Specific librariers to load onto your virtual environment with the latest version
+Required Libraries 
+Tensorflow 
+scikit-learn 
+mathplotlib
+numpy 
+pandas
+SCi-Py
